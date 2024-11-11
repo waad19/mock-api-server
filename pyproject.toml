@@ -2,8 +2,8 @@
 name = "mock-api-server"
 version = "0.1.0"
 description = ""
-authors = ["Liubomyr Pavlovskyi <lpavlo@softserveinc.com>"]
-readme = "README.md"
+authors = ["Liubomyr Pavlovskyi <zzee19191919@gmail.com>"]
+readme = "readme.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
