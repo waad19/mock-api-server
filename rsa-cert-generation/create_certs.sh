@@ -42,7 +42,7 @@ openssl req -config /root/ca/rsa/intermediate/openssl.cnf \
       -key /root/ca/rsa/intermediate/private/intermediate.key.pem \
       -new -sha256 \
       -out /root/ca/rsa/intermediate/csr/intermediate.csr.pem \
-      -subj "/C=UA/ST=Rivne/L=Rivne/O=SoftServerAcademy/OU=Engineering/CN=SoftServer Engineering Root CA"
+      -subj "/C=UA/ST=Rivne/L=Rivne/O=SoftServerAcademy/OU=Engineering/CN=SoftServer Engineering Intermediate CA"
 
 #Creating an intermediate certificate, by signing the previous csr with the CA key based on root ca config with the directive v3_intermediate_ca extension to sign the intermediate CSR
 echo -e "y\ny\n" | openssl ca -config /root/ca/rsa/openssl.cnf \

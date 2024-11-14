@@ -20,9 +20,9 @@ services:
     container_name: api-mock-server
     volumes:
       - api_mock_certs:/root/ca/rsa/volumed_dir
-    expose:
-      - "80"
-      - "443"
+    ports:
+      - "8080:80"
+      - "8443:443"
 
 volumes:
   api_mock_certs:
