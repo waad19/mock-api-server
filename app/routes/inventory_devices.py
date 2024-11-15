@@ -46,7 +46,7 @@ def get_guids():
             default_guid_add_response['status_code'])
 
 
-@inventory_devices_bp.route(GUID_ADD_URL, methods=['PUT'])
+@inventory_devices_bp.route(GUID_GET_URL, methods=['PUT'])
 def update_guid_add():
     data = request.get_json()
     default_guid_add_response['body'] = data['body']
