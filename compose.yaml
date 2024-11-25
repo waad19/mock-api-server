@@ -12,17 +12,35 @@ services:
     volumes:
       - .:/opt/project
       - api_mock_certs:/root/ca/rsa/volumed_dir
-    # entrypoint: ["sh", "-c", "while true; do sleep 1000; done"] infinite loop to run container
+#  infinite loop to run container
+#    entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
     entrypoint: ["ping", "-c", "5", "api-mock-server"]
 
   api-mock:
     build: .
     container_name: api-mock-server
+    restart: always
     volumes:
       - api_mock_certs:/root/ca/rsa/volumed_dir
     ports:
       - "8080:80"
       - "8443:443"
+
+  mock-database:
+    image: postgres:latest
+    container_name: mock-db-server
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mockdb
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+# Almost empty database
+#      - ./database/empty.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
 
 volumes:
   api_mock_certs:

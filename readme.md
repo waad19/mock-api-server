@@ -9,6 +9,11 @@ docker-compose build
 ```
 If you made any changes to api-mock service - rebuild it with the same above cmd
 
+### RUN EVERYTHING
+```
+docker-compose up -d
+```
+
 ### RUN TESTS
 ```
 docker-compose run tests
@@ -18,6 +23,11 @@ docker-compose run tests
 Replace entrypoint on tests service to infinite loop
 ```
 docker-compose up -d
+```
+
+### CONNECT TO RUNNING DB
+```
+docker exec -it mock-db-server psql -U user -d mockdb
 ```
 
 ### SHUTDOWN

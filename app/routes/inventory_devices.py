@@ -14,8 +14,8 @@ default_inventory_devices_response = read_json_file(DEFAULT_INVENTORY_DEVICES_RE
 
 GUID_GET_URL = '/guids'
 GUID_ADD_URL = '/<path:guid>/add'
-DEFAULT_GUID_ADD_RESPONSE_FILE = '/opt/project/responses/guid_add.json'
-default_guid_add_response = read_json_file(DEFAULT_GUID_ADD_RESPONSE_FILE)
+DEFAULT_GUIDS_RESPONSE_FILE = '/opt/project/responses/guids.json'
+default_guids_response = read_json_file(DEFAULT_GUIDS_RESPONSE_FILE)
 
 
 @inventory_devices_bp.route(INVENTORY_DEVICES_URL, methods=['GET'])
@@ -35,21 +35,21 @@ def update_response_inventory_appliances():
 
 @inventory_devices_bp.route(GUID_ADD_URL, methods=['POST'])
 def post_guid_add(guid):
-    default_guid_add_response['body']['guid'].append(guid)
-    return (jsonify(default_guid_add_response['body']),
-            default_guid_add_response['status_code'])
+    default_guids_response['body']['guids'].append(guid)
+    return (jsonify(default_guids_response['body']),
+            default_guids_response['status_code'])
 
 
 @inventory_devices_bp.route(GUID_GET_URL, methods=['GET'])
 def get_guids():
-    return (jsonify(default_guid_add_response['body']),
-            default_guid_add_response['status_code'])
+    return (jsonify(default_guids_response['body']),
+            default_guids_response['status_code'])
 
 
-@inventory_devices_bp.route(GUID_ADD_URL, methods=['PUT'])
-def update_guid_add():
+@inventory_devices_bp.route(GUID_GET_URL, methods=['PUT'])
+def update_guids():
     data = request.get_json()
-    default_guid_add_response['body'] = data['body']
-    default_guid_add_response['status_code'] = data['status_code']
-    return jsonify({'new_body': default_guid_add_response['body'],
-                    'new_status_code': default_guid_add_response['status_code']}), 200
+    default_guids_response['body'] = data['body']
+    default_guids_response['status_code'] = data['status_code']
+    return jsonify({'new_body': default_guids_response['body'],
+                    'new_status_code': default_guids_response['status_code']}), 200
