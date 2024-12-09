@@ -6,6 +6,8 @@ services:
     depends_on:
       api-mock:
         condition: service_started
+      mock-database:
+        condition: service_started
     environment:
       - REQUESTS_CA_BUNDLE=/root/ca/rsa/volumed_dir/full-chain.cert.pem
     working_dir: /opt/project
@@ -13,8 +15,8 @@ services:
       - .:/opt/project
       - api_mock_certs:/root/ca/rsa/volumed_dir
 #  infinite loop to run container
-#    entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
-    entrypoint: ["ping", "-c", "5", "api-mock-server"]
+    entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
+#    entrypoint: ["ping", "-c", "5", "api-mock-server"]
 
   api-mock:
     build: .
