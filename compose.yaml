@@ -22,9 +22,9 @@ services:
     restart: always
     volumes:
       - api_mock_certs:/root/ca/rsa/volumed_dir
-    ports:
-      - "8080:80"
-      - "8443:443"
+    expose:
+      - "80"
+      - "443"
 
   mock-database:
     image: postgres:latest
