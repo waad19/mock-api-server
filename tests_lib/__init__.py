@@ -1,1 +1,1 @@
-# Python library for tests
+from .common import *
