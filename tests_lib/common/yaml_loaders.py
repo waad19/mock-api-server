@@ -17,10 +17,8 @@ def load_yaml(file_path: Path) -> Any:
     if not found_path.exists():
         raise FileNotFoundError(f"File not found: {file_path}")
     with open(found_path, "r") as file:
-        try:
-            return yaml.safe_load(file)
-        except yaml.YAMLError as error:
-            raise RuntimeError(f"Error parsing YAML file: {file_path}\n{error}")
+        return yaml.safe_load(file)
+
 
 
 def load_config(config_name: str):

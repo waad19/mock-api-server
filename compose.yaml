@@ -11,7 +11,7 @@ services:
         condition: service_started
     working_dir: /opt/project
     volumes:
-      - ./congif:/opt/project/congif
+      - ./config:/opt/project/config
       - ./logs:/opt/project/logs
       - ./test_data:/opt/project/test_data
       - ./tests_lib:/opt/project/tests_lib
